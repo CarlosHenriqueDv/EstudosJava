@@ -11,6 +11,19 @@ public class Celular {
     }
 
     @Override
+    public int hashCode() {
+        return IMEI != null ? IMEI.hashCode() : 1;
+    }
+
+    @Override
+    public String toString() {
+        return "Celular{" +
+                "nome='" + nome + '\'' +
+                ", IMEI='" + IMEI + '\'' +
+                '}';
+    }
+
+    @Override
     public boolean equals(Object obj) {
         if (obj == null) return false;
         if (this == obj) return true;
