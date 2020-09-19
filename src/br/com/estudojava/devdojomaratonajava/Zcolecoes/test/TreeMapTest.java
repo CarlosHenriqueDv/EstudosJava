@@ -22,6 +22,8 @@ public class TreeMapTest {
             System.out.println(entry.getKey() + "" + entry.getValue());
         }
 
+        System.out.println(map.headMap("C",true));
+
 
 
 
