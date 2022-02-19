@@ -2,24 +2,22 @@ package br.com.estudojava.desafiouri.iniciante;
 
 import java.util.Scanner;
 
-public class Main {
+public class Cedulas {
 
     private enum notas{
         CEM(100), CINQUENTA(50), VINTE(20), DEZ(10), CINCO(5),
         DOIS(2), UM(1);
         private int valor;
         notas(int valor) {
+            this.valor = valor;
         }
     }
 
 
 
     public static void main(String[] args) {
-
-        int valorDeEntrada;
-
         //Notas
-        System.out.println("Informe o valor: ");
+        //System.out.println("Informe o valor: ");
         Scanner entrada = new Scanner(System.in);
 
         int notas100, notas50, notas20, notas10,
