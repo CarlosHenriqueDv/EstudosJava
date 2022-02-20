@@ -2,8 +2,8 @@ package br.com.estudojava.desafiouri.iniciante;
 
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
-import java.util.Currency;
 import java.util.Locale;
+import java.util.Scanner;
 
 public class URI1021NotasEMoedas {
 
@@ -41,16 +41,14 @@ public class URI1021NotasEMoedas {
 
     public static void main(String... args){
 
-        double valorEntrada = 91.01;
+        Scanner scan = new Scanner(System.in);
+
+        double valorEntrada = scan.nextDouble();
 
         Dinheiro dinheiro = new Dinheiro(valorEntrada);
         dinheiro.exibiValorEmNotas();
         dinheiro.exibeValorEmMoedas();
 
-
-
-        //extraiNotas(valorEntrada);
-        //extraiMoedas(valorEntrada);
 
     }
 
@@ -69,9 +67,6 @@ public class URI1021NotasEMoedas {
         public void exibiValorEmNotas(){
 
             Locale local = new Locale("pt", "br");
-            DecimalFormat d = new DecimalFormat("00.00");
-
-            System.out.println(d.format(Notas.CEM.valor));
 
             int valorTotal = (int) valorEntrada;
             int valorRestante = valorTotal;
@@ -80,31 +75,31 @@ public class URI1021NotasEMoedas {
             System.out.println("NOTAS:");
             dinheiroEmNotas += qtdNotasCem * Notas.CEM.valor;
 
-            System.out.println(qtdNotasCem + " Nota(s) de " + NumberFormat.getCurrencyInstance(local).format(Notas.CEM.valor));
+            System.out.println(qtdNotasCem + " nota(s) de " + NumberFormat.getCurrencyInstance(local).format(Notas.CEM.valor).replace(",", "."));
             valorRestante %= Notas.CEM.valor;
 
             int qtdNotasCinquenta = valorRestante / Notas.CINQUENTA.valor;
-            System.out.println(qtdNotasCinquenta + " Nota(s) de " + NumberFormat.getCurrencyInstance(local).format(Notas.CINQUENTA.valor));
+            System.out.println(qtdNotasCinquenta + " nota(s) de " + NumberFormat.getCurrencyInstance(local).format(Notas.CINQUENTA.valor).replace(",", "."));
             dinheiroEmNotas += qtdNotasCinquenta * Notas.CINQUENTA.valor;
             valorRestante %= Notas.CINQUENTA.valor;
 
             int qtdNotasVinte = valorRestante / Notas.VINTE.valor;
-            System.out.println(qtdNotasVinte +  " Nota(s) de " + NumberFormat.getCurrencyInstance(local).format(Notas.VINTE.valor));
+            System.out.println(qtdNotasVinte +  " nota(s) de " + NumberFormat.getCurrencyInstance(local).format(Notas.VINTE.valor).replace(",", "."));
             dinheiroEmNotas += qtdNotasVinte * Notas.VINTE.valor;
             valorRestante %= Notas.VINTE.valor;
 
             int qtdNotasDez = valorRestante / Notas.DEZ.valor;
-            System.out.println(qtdNotasDez + " Nota(s) de " + NumberFormat.getCurrencyInstance(local).format(Notas.DEZ.valor));
+            System.out.println(qtdNotasDez + " nota(s) de " + NumberFormat.getCurrencyInstance(local).format(Notas.DEZ.valor).replace(",", "."));
             dinheiroEmNotas += qtdNotasDez * Notas.DEZ.valor;
             valorRestante %= Notas.DEZ.valor;
 
             int qtdNotasCinco = valorRestante / Notas.CINCO.valor;
-            System.out.println(qtdNotasCinco + " Nota(s) de " + NumberFormat.getCurrencyInstance(local).format(Notas.CINCO.valor));
+            System.out.println(qtdNotasCinco + " nota(s) de " + NumberFormat.getCurrencyInstance(local).format(Notas.CINCO.valor).replace(",", "."));
             dinheiroEmNotas += qtdNotasCinco * Notas.CINCO.valor;
             valorRestante %= Notas.CINCO.valor;
 
             int qtdNotasDois = valorRestante / Notas.DOIS.valor;
-            System.out.println(qtdNotasDois + " Nota(s) de " + NumberFormat.getCurrencyInstance(local).format(Notas.DOIS.valor));
+            System.out.println(qtdNotasDois + " nota(s) de " + NumberFormat.getCurrencyInstance(local).format(Notas.DOIS.valor).replace(",", "."));
             dinheiroEmNotas += qtdNotasDois * Notas.DOIS.valor;
 
         }
@@ -118,8 +113,27 @@ public class URI1021NotasEMoedas {
 
             System.out.println("MOEDAS:");
             int qtdMoedasUmReal = moedas / Moedas.UM_REAL.valor;
-            System.out.println(qtdMoedasUmReal + " moeda(s) de R$ " + d.format(Moedas.UM_REAL.valor));
+            System.out.println(qtdMoedasUmReal + " moeda(s) de R$ " + d.format(Moedas.UM_REAL.valor).replace(",", "."));
 
+            valorRestante %= Moedas.UM_REAL.valor;
+            int qtdMoedasCinquenta = valorRestante / Moedas.CINQUENTA.valor;
+            System.out.println(qtdMoedasCinquenta + " moeda(s) de R$ " + d.format(Moedas.CINQUENTA.valor).replace(",", "."));
+
+            valorRestante %= Moedas.CINQUENTA.valor;
+            int qtdMoedasVinteEcinco = valorRestante / Moedas.VINTE_E_CINCO.valor;
+            System.out.println(qtdMoedasVinteEcinco + " moeda(s) de R$ " + d.format(Moedas.VINTE_E_CINCO.valor).replace(",", "."));
+
+            valorRestante %= Moedas.VINTE_E_CINCO.valor;
+            int qtdMoedasDez = valorRestante / Moedas.DEZ.valor;
+            System.out.println(qtdMoedasDez + " moeda(s) de R$ " + d.format(Moedas.DEZ.valor).replace(",", "."));
+
+            valorRestante %= Moedas.DEZ.valor;
+            int qtdMoedasCincoCentavos = valorRestante / Moedas.CINCO.valor;
+            System.out.println(qtdMoedasCincoCentavos + " moeda(s) de R$ " + d.format(Moedas.CINCO.valor).replace(",", "."));
+
+            valorRestante %= Moedas.CINCO.valor;
+            int qtdMoedasUmCentavo = valorRestante / Moedas.UM_CENTAVO.valor;
+            System.out.println(qtdMoedasUmCentavo + " moeda(s) de R$ " + d.format(Moedas.UM_CENTAVO.valor).replace(",", "."));
 
 
 
