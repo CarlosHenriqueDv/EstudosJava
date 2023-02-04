@@ -40,7 +40,7 @@
                     <artifactId>com.springsource.org.apache.commons.logging</artifactId>
                 </exclusion>
             </exclusions>
-            <version>4.0.3.RELEASE</version>
+            <version>5.2.22.RELEASE</version>
         </dependency>
 
         <dependency>
